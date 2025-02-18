@@ -11,7 +11,7 @@ class Database:
 
     def __init__(self):
         settings = Settings()
-        self.engine = create_engine(f"postgresql+psycopg2://{settings.USER}:{settings.PASSWORD}@localhost:{settings.PORT}/{settings.DBNAME}",
+        self.engine = create_engine(f"postgresql+psycopg2://{settings.USER}:{settings.PASSWORD}@db:{settings.PORT}/{settings.DBNAME}",
                                  isolation_level="READ COMMITTED",query_cache_size = 0 )
         Session = sessionmaker(bind=self.engine)
         self.session = Session()

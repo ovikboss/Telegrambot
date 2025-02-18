@@ -9,7 +9,6 @@ from  core.DB.models import User
 from core.checksubscribe.checker import subscription_required
 
 @router.message(Command("register"))
-@subscription_required
 async def register_command(message: types.Message, state: FSMContext):
     await state.set_state(Registration.waiting_for_name)
     await message.reply("Пожалуйста, введите ваше имя:")
