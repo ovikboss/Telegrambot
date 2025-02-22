@@ -14,7 +14,7 @@ async def command_bmr(message: types.Message, state: FSMContext):
     bmr = db.get_data_bmr(user_id)
     if bmr:
         activity_level = db.get_activity_level(user_id)
-        await message.reply(f"Ваш уровень базального метаболизма - {bmr:.2f} ккал\nКалорий с учетом вашей активности - {bmr * activity_level / 2.6:.2f} ")
+        await message.reply(f"Ваш уровень базального метаболизма - {bmr:.2f} ккал\nКалорий с учетом вашей активности - {bmr * activity_level:.2f} ")
     else:
         await message.reply(f"Нужно зарегистрироваться")
 

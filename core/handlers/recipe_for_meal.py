@@ -13,9 +13,9 @@ from core.DB.db import  db
 async def get_recipe_for_meal(user_id: str, meal_type: str, calories:int) -> str:
     """Возвращает рецепт для конкретного приема пищи (нужно реализовать)."""
     recipe = db.get_recipe(meal_type = meal_type, calories = calories)
-    user_subcribe = db.get_user_subscribe(user_id)
+    user_subscribe = db.get_user_subscribe(user_id)
     await asyncio.sleep(0)
-    if user_subcribe[0]:
+    if user_subscribe[0]:
         if recipe:
             return random.choice(recipe)
         else:

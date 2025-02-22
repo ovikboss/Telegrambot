@@ -21,7 +21,7 @@ async def subscribe_user(message: types.Message, state: FSMContext):
         confirmation_url = payment.confirmation.confirmation_url  # Get payment link
         builder = InlineKeyboardBuilder()
         builder.button(text="Оплатить", url=confirmation_url)  # Create button with link
-        await message.reply("Для оформления подписки, перейдите по ссылке:",
+        await message.reply("Для оформления подписки, перейдите по ссылке, стоимость подписки 100 рублей:",
                                           reply_markup=builder.as_markup())
         await asyncio.sleep(60)
         text = check_payment_status(payment.id)

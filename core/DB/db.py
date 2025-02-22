@@ -83,7 +83,16 @@ class Database:
     def get_activity_level(self, user_id):
 
         activity_level = self.session.query(User.activity_level).filter(User.id == user_id).first()
-        return activity_level[0]
+        activity = activity_level[0]
+        if activity < 2:
+            activity = 1.2
+        elif activity < 3:
+            activity = 1.4
+        elif activity < 4:
+            activity = 1.55
+        else:
+            activity = 1,7
+        return activity
 
     def breakfast_time_entered(self, user_id, breakfast_time):
         user = self.session.query(User).filter(User.id == user_id).first()
